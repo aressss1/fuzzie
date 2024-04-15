@@ -1,15 +1,13 @@
 'use client'
-
 import type { NextPage } from 'next'
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { motion, useAnimation } from 'framer-motion'
-
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import type { Container, Engine } from '@tsparticles/engine'
 import { loadSlim } from '@tsparticles/slim'
-import { cn } from '@/lib/utils'
 
+import { motion, useAnimation } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 type ParticlesProps = {
   id?: string
@@ -22,7 +20,6 @@ type ParticlesProps = {
   particleColor?: string
   particleDensity?: number
 }
-
 export const SparklesCore = (props: ParticlesProps) => {
   const {
     id,
