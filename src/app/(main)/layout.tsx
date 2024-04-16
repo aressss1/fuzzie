@@ -1,6 +1,8 @@
 import React from "react";
 
 import Sidebar from "@/components/sidebar";
+import { Tooltip } from "@/components/ui/tooltip";
+import InfoBar from "@/components/infobar";
 
 type Props = { children: React.ReactNode }
 
@@ -9,6 +11,7 @@ const Layout = (props: Props) => {
         <div className="flex overflow-hidden h-screen " >
             <Sidebar />
             <div className="w-full" >
+                <InfoBar />
                 {props.children}
             </div>
         </div>

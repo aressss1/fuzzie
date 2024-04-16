@@ -84,7 +84,6 @@ const Sidebar = () => {
                             className="dark:text-white"
                             size={18}
                         />
-                        <div className="border-l-2 border-muted-foreground/50 h-6 absolute left-1/2 transform translate-x-[-50%] -bottom-[30px] " />
                     </div>
                 </div>
             </div>
