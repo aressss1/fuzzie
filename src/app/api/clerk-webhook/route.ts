@@ -3,12 +3,13 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
     try {
+
         const body = await  req.json();
         console.log(body)
 
         const {id, email_addressess , first_name, image_url} = body?.data;
 
-        const email = email_addressess[0]?.email_address
+        const email = email_addressess?.[0]?.email_address
 
         await db.user.upsert({
             where: { clerkId: id },
