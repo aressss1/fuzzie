@@ -1,8 +1,8 @@
 import ProfileForm from "@/components/forms/profile-form";
-
-import ProfilePicture from "./_components/profile-picture";
 import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs";
+
+import ProfilePicture from "./_components/profile-picture";
 
 const Settings = async () => {
     const authUser = await currentUser()
@@ -72,10 +72,10 @@ const Settings = async () => {
                     onUpload={uploadProfileImage}
                 >
                 </ProfilePicture>
-                <ProfileForm 
+                {/* <ProfileForm 
                     user={user}
                     onUpdate={updateUserInfo}
-                />
+                /> */}
             </div>
         </div>
      );
