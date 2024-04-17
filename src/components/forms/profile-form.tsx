@@ -55,7 +55,7 @@ const ProfileForm = ({ user, onUpdate } : Props) => {
                     render={({field}) => (
                         <FormItem>
                             <FormLabel className="text-lg capitalize" >
-                                User full name
+                                name:
                             </FormLabel>
                             <FormControl>
                                 <Input
@@ -73,13 +73,13 @@ const ProfileForm = ({ user, onUpdate } : Props) => {
                     render={({field}) => (
                         <FormItem>
                             <FormLabel className="text-lg capitalize" >
-                                Email Address
+                                Email Address:
                             </FormLabel>
                             <FormControl>
                                 <Input
+                                    {...field}
                                     disabled={true}
                                     placeholder="Email"
-                                    {...field}
                                     type="email"
                                 />
                             </FormControl>

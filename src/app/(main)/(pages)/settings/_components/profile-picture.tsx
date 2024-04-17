@@ -30,10 +30,10 @@ const ProfilePicture = ({ userImage, onDelete, onUpload }: Props) => {
             <p className="text-lg text-white" >
                 Profile Picture
             </p>
-            <div className="flex h-[30vh] flex-col items-center justify-center " >
+            <div className="flex h-[30vh] flex-col items-center justify-center mt-4 " >
                 {userImage ? (
                     <>
-                        <div className="relative h-full w-2/12" >
+                        <div className="relative h-full w-2/12 self-baseline " >
                             <Image
                                 src={userImage}
                                 alt="UserImage"
@@ -42,9 +42,9 @@ const ProfilePicture = ({ userImage, onDelete, onUpload }: Props) => {
                         </div>
                         <Button
                             onClick={onRemoveProfileImage}
-                            className="bg-transparent text-white/70 hover:bg-transparent hover:text-white"
+                            className=" self-baseline bg-transparent text-white/70 hover:bg-transparent hover:text-white py-4 "
                         >
-                            <X /> Remove Logo
+                            <X /> Remove Image
                         </Button>
                     </>
                 ) : (
