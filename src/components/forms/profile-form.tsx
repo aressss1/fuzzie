@@ -46,7 +46,7 @@ const ProfileForm = ({ user, onUpdate } : Props) => {
         <Form {...form}>
             <form
                 className="flex flex-col gap-6"
-                onSubmit={ form.handleSubmit(handleSubmit) }
+                onSubmit={form.handleSubmit(handleSubmit)}
             >
                 <FormField 
                     disabled={isLoading}
@@ -68,7 +68,6 @@ const ProfileForm = ({ user, onUpdate } : Props) => {
                     )}
                 />
                 <FormField 
-                    disabled={true}
                     control={form.control}
                     name="email"
                     render={({field}) => (
@@ -78,9 +77,10 @@ const ProfileForm = ({ user, onUpdate } : Props) => {
                             </FormLabel>
                             <FormControl>
                                 <Input
+                                    disabled={true}
                                     placeholder="Email"
-                                    type="email"
                                     {...field}
+                                    type="email"
                                 />
                             </FormControl>
                             <FormMessage />
