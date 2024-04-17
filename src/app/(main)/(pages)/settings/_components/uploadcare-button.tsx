@@ -19,7 +19,7 @@ const UploadCareButton = ({ onUpload }: Props) => {
             const file = await onUpload(e.detail.cdnUrl)
 
             if (file) {
-                router.push
+                router.refresh()
             }
         }
 
