@@ -70,8 +70,7 @@ const Settings = async () => {
                     onDelete={removeProfileImage}
                     userImage={user?.profileImage || ''}
                     onUpload={uploadProfileImage}
-                >
-                </ProfilePicture>
+                />
                 <ProfileForm 
                     user={user}
                     onUpdate={updateUserInfo}
