@@ -6,7 +6,7 @@ type Props = {}
 
 const EditorId = (props: Props) => {
     return ( 
-        <div>
+        <div className="h-full" >
             <EditorProvider>
                 <ConnectionsProvider>
                     <EditorCanvas />
