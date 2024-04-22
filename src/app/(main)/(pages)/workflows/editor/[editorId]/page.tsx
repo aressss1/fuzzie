@@ -1,14 +1,17 @@
+import { ConnectionsProvider } from "@/providers/connection-provider";
+import EditorProvider from "@/providers/editor-provider";
+import EditorCanvas from "./_components/editor-canvas";
 
-type Props = {
-    params : {
-        editorId: string
-    }
-}
+type Props = {}
 
 const EditorId = (props: Props) => {
     return ( 
         <div>
-            {props.params.editorId}
+            <EditorProvider>
+                <ConnectionsProvider>
+                    <EditorCanvas />
+                </ConnectionsProvider>
+            </EditorProvider>
         </div>
      );
 }
