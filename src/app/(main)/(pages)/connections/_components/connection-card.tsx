@@ -3,13 +3,15 @@ import { ConnectionTypes } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 
+// Connected Porps is not optional , Change it back
+
 type Props = {
     type: ConnectionTypes
     icon: string
     title: ConnectionTypes
     description: string
     callback?: () => void
-    connected: {} & any 
+    connected?: {} & any 
 }
 
 const ConnectionCard = ({
