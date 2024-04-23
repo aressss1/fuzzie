@@ -5,7 +5,7 @@ import { useEditor } from '@/providers/editor-provider';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { EditorCanvasDefaultCardTypes } from '@/lib/constant';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import ReactFlow, {
   Background,
   Connection,
@@ -154,6 +154,10 @@ const EditorCanvas = () => {
       },
     })
   }
+
+  useEffect(() => {
+    dispatch({ type: "LOAD_DATA", payload: { edges, elements:nodes} })
+  } , [nodes, edges])
 
   return (
     <ResizablePanelGroup
