@@ -12,6 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 import EditorCanvasIconHelper from "./editor-canvas-card-icon-helper";
 import RenderConnectionAccordion from "./render-connection-accordian";
+import RenderOutputAccordion from "./render-output-accordian";
 
 type Props = {
     nodes: EditorNodeType[]
@@ -91,7 +92,7 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
                                 ))}
                             </AccordionContent>
                         </AccordionItem>
-                        {/* <AccordionItem
+                        <AccordionItem
                             value="Expected Output"
                             className="px-2"
                         >
@@ -102,7 +103,7 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
                                 state={state}
                                 nodeConnection={nodeConnection}
                             />
-                        </AccordionItem> */}
+                        </AccordionItem>
                     </Accordion>
                 </TabsContent>
             </Tabs>

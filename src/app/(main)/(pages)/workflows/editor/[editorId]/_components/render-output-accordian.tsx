@@ -8,7 +8,7 @@ type Props = {
     nodeConnection: ConnectionProviderProps
 }
 
-const RenerOutputAccordion = ({
+const RenderOutputAccordion = ({
     state, nodeConnection
 }: Props) => {
     const {
@@ -29,4 +29,4 @@ const RenerOutputAccordion = ({
      );
 }
  
-export default RenerOutputAccordion;
+export default RenderOutputAccordion;
