@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { useNodeConnections } from "@/providers/connection-provider"
 
 import { usePathname } from "next/navigation"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { toast } from "sonner"
 import { onCreateNodeEdges, onFlowPublish } from "../_actions/worflow-connections"
 
@@ -33,6 +33,23 @@ const FlowInstance = ({ children, edges, nodes } : Props) => {
         const response = await onFlowPublish(pathname.split("/").pop()! , true)
         if(response) toast.message(response)
     } , [])
+
+    const onAutomateFlow = async () => {
+        const flows: any = []
+        const connectedEdges = edges.map((edge) => edge.target)
+        connectedEdges.map((target) => {
+            nodes.forEach((node) => {
+                if (node.id === target) {
+                    flows.push(node.type)
+                }
+            })
+        })
+        setIsFlow(flows)
+    }
+
+    useEffect(() => {
+        onAutomateFlow()
+    } , [ edges ])
 
     return ( 
         <div className="flex flex-col gap-2" >

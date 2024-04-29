@@ -4,15 +4,17 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CONNECTIONS, EditorCanvasDefaultCardTypes } from "@/lib/constant";
-import { onDragStart } from "@/lib/editor-utils";
+import { fetchBotSlackChannels, onConnections, onDragStart } from "@/lib/editor-utils";
 import { EditorCanvasTypes, EditorNodeType } from "@/lib/types";
 import { useNodeConnections } from "@/providers/connection-provider";
 import { useEditor } from "@/providers/editor-provider";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useFuzzieStore } from "@/zustand-store";
 
 import EditorCanvasIconHelper from "./editor-canvas-card-icon-helper";
 import RenderConnectionAccordion from "./render-connection-accordian";
 import RenderOutputAccordion from "./render-output-accordian";
+import { useEffect } from "react";
 
 type Props = {
     nodes: EditorNodeType[]
@@ -21,6 +23,20 @@ type Props = {
 const EditorCanvasSidebar = ({ nodes }: Props) => {
     const { state } = useEditor()
     const { nodeConnection } = useNodeConnections()
+    const { googleFile, setSlackChannels } = useFuzzieStore();
+
+    useEffect(() => {
+        onConnections(nodeConnection, state, googleFile)
+    } , [state])
+
+    useEffect(() => {
+        if(nodeConnection.slackNode.slackAccessToken){
+            fetchBotSlackChannels(
+                nodeConnection.slackNode.slackAccessToken,
+                setSlackChannels
+            )
+        }
+    } , [nodeConnection])
 
     return (
         <aside>
