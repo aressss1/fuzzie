@@ -38,7 +38,6 @@ export async function GET(req: NextRequest) {
       const databaseId = databasesPages?.results?.length
         ? databasesPages.results[0].id
         : '';
-
         console.log(databaseId)
 
       return NextResponse.redirect(
