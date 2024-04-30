@@ -1,9 +1,12 @@
 import { WorkflowFormSchema } from "@/lib/types"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { onCreateWorkflow } from "@/app/(main)/(pages)/workflows/_actions/workflow-connection"
+import { useModal } from '@/providers/modal-provider'
 
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { toast } from "sonner"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
@@ -17,6 +20,9 @@ type Props = {
 }
 
 const WorkflowForm = ({ subTitle, title }: Props) => {
+    const { setClose } = useModal()
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof WorkflowFormSchema>>({
         mode: "onChange",
         resolver: zodResolver(WorkflowFormSchema),
@@ -27,9 +33,15 @@ const WorkflowForm = ({ subTitle, title }: Props) => {
     })
 
     const isLoading = form.formState.isLoading
-    const router = useRouter()
 
-    const handleSubmit = () => { }
+    const handleSubmit = async (values: z.infer<typeof WorkflowFormSchema>) => {
+        const workflow = await onCreateWorkflow(values.name, values.description)
+        if (workflow) {
+            toast.message(workflow.message)
+            router.refresh()
+        }
+        setClose()
+    }
 
     return (
         <Card className="w-full max-w-[650px] border-none" >
@@ -79,14 +91,14 @@ const WorkflowForm = ({ subTitle, title }: Props) => {
                                 </FormItem>
                             )}
                         />
-                        <Button 
+                        <Button
                             className="mt-4"
                             disabled={isLoading}
                             type="submit"
                         >
                             {isLoading ? (
                                 <>
-                                    <Loader2  className="mr-2 h-4 w-4 animate-spin" /> Saving
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving
                                 </>
                             ) : (
                                 'Save Setting'
