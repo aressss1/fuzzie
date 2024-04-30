@@ -38,7 +38,8 @@ export async function GET(req: NextRequest) {
       const databaseId = databasesPages?.results?.length
         ? databasesPages.results[0].id
         : '';
-        console.log(databaseId)
+        
+        console.log(databaseId , 'api,databaseId')
 
       return NextResponse.redirect(
         `https://fuzzie-seven.vercel.app/connections?access_token=${response.data.access_token}&workspace_name=${response.data.workspace_name}&workspace_icon=${response.data.workspace_icon}&workspace_id=${response.data.workspace_id}&database_id=${databaseId}`
