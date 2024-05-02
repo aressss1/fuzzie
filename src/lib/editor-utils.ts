@@ -104,6 +104,7 @@ export const onConnections = async (
   }
   if (editorState.editor.selectedNode.data.title == 'Notion') {
     const connection = await getNotionConnection()
+    console.log("notion1")
     if (connection) {
       nodeConnection.setNotionNode({
         accessToken: connection.accessToken,
@@ -115,6 +116,7 @@ export const onConnections = async (
           type: googleFile.mimeType,
         },
       })
+      console.log("notion2")
 
       if (nodeConnection.notionNode.databaseId !== '') {
         const response = await getNotionDatabase(
@@ -122,7 +124,10 @@ export const onConnections = async (
           nodeConnection.notionNode.accessToken
         )
       }
+      console.log("notion3")
     }
+
+    console.log("notion4")
   }
   if (editorState.editor.selectedNode.data.title == 'Slack') {
     const connection = await getSlackConnection()
