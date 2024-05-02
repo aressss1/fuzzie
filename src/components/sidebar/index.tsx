@@ -88,9 +88,9 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className="flex items-center justify-center flex-col gap-8" >
+            {/* <div className="flex items-center justify-center flex-col gap-8" >
                 <ModeToggle />
-            </div>
+            </div> */}
         </nav>
     );
 }
