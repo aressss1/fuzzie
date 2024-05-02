@@ -4,11 +4,13 @@ import WorkflowForm from "@/components/forms/workflow-form";
 import CustomModal from "@/components/global/custom-modal";
 import { Button } from "@/components/ui/button";
 import { useModal } from "@/providers/modal-provider";
+import { useBilling } from '@/providers/billing-provider'
 import { Plus } from "lucide-react";
 
 
 const WorkflowButton = () => {
     const { setOpen, setClose } = useModal()
+    const { credits } = useBilling()
 
     const handleClick = () => {
         setOpen(
@@ -24,7 +26,13 @@ const WorkflowButton = () => {
     return ( 
         <Button
             size={"icon"}
-            onClick={handleClick}
+            {...(credits !== '0'
+        ? {
+            onClick: handleClick,
+          }
+        : {
+            disabled: true,
+          })}
         >   
             <Plus />
         </Button>
