@@ -75,3 +75,10 @@
   }
 }
 
+@layer utilities {
+  .scrollbar-setting {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+  }
+}

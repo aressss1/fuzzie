@@ -42,7 +42,7 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
         <aside>
             <Tabs
                 defaultValue="actions"
-                className="h-screen overflow-scroll pb-24"
+                className="h-screen scrollbar-setting pb-24"
             >
                 <TabsList className="bg-transparent" >
                     <TabsTrigger value="actions" >
