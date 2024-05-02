@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react'
 import { ModeToggle } from '../global/mode-toggle'
 import { Book, Headphones, Search } from 'lucide-react'
-import Templates from '../icons/cloud_download'
 import { Input } from '@/components/ui/input'
 
 import {
@@ -15,6 +14,8 @@ import {
 import { UserButton } from '@clerk/nextjs'
 import { useBilling } from '@/providers/billing-provider'
 import { onPaymentDetails } from '@/app/(main)/(pages)/billing/_actions/payment-connections'
+
+
 
 type Props = {}
 
@@ -52,6 +53,9 @@ const InfoBar = (props: Props) => {
           className="border-none bg-transparent"
         />
       </span>
+
+      <ModeToggle />
+
       <TooltipProvider>
         <Tooltip delayDuration={0}>
           <TooltipTrigger>
